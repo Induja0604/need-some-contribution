@@ -1,0 +1,178 @@
+body {
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.shipping-address-container {
+    display: flex;
+    height: 100vh;
+    width: 95%;
+    margin-left: 100px;
+}
+
+
+
+.content {
+    flex: 3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-addAddress {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-addAddress:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.right-shipping-addresses {
+   
+    margin: 50px 30px;
+    width: 70%;
+    padding: 20px;
+    background-color: #f7f8fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px;
+    
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:hover, input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.shippingaddress-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    width: 70%;
+    position: relative;
+    left: 20%;
+}
+
+.shippingaddress-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+.shippingaddress-item> div {
+    margin-bottom: 5px;
+    opacity: 0.7;
+    font-size: small;
+}
+
+.modal {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-height: 70vh;
+    overflow: auto;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+.btn-addAddress {
+  
+    top: 2%;
+    left: 80%;
+}
+
+.edit-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    .navbar ul {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .navbar ul li {
+        margin-bottom: 0;
+    }
+
+    .btn-addAddress {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .right-shipping-addresses {
+        width: 100%;
+    }
+}

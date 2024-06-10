@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Profilepage from "./Pages/Profilepage";
+import Homepagecomp from './Components/Homepagecomp';
+import Homepage from "./Pages/Homepage";
+import Blogpage from "./Pages/Blogpage";
+import Aboutuspage from "./Pages/Aboutuspage";
+import Helpcenterpage from './Pages/Helpcenterpage';
+import Helpcenterinfopage from './Pages/Helpcenterinfopage';
+import ProductList from './Components/ProductList';
+import ProductListpage from './Pages/ProductListpage';
+import ProductPage from './Pages/ProductPage';
+import Cartpage from './Pages/Cartpage';
+import Paymentformpage from './Pages/Paymentformpage';
+import Onlinepaymentpage from './Pages/Onlinepaymentpage';
+import Addresspage from './Pages/Addresspage';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+  <BrowserRouter >
+    <Routes>
+    {/* <Route index element={<Homepagecomp />} />  */}
+    <Route index element={<Homepage />} />
+        <Route path="/Privacy Policy" element={<Blogpage />} />
+        <Route path="/Aboutus" element={<Aboutuspage/>}/>
+      <Route path="/profile" element={ <Profilepage/>}/>
+      <Route path="/helpcenter and faqs" element={ <Helpcenterpage/>}/>
+      <Route path="/helpcenterinfo" element={ <Helpcenterinfopage/>}/>
+      <Route path="/searchresults" element={ <ProductListpage/>}/>
+      <Route path="/productdetails" element={ <ProductPage/>}/>
+      <Route path="/cartdetails" element={ <Cartpage/>}/>
+      <Route path="/paymentform" element={ <Paymentformpage/>}/>
+      <Route path="/onlinepayment" element={ <Onlinepaymentpage/>}/>   
+      <Route path="/address" element={ <Addresspage/>}/>      
+   
+    </Routes>
+    </BrowserRouter>
     </div>
   );
 }
