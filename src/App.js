@@ -16,6 +16,7 @@ import Onlinepaymentpage from './Pages/Onlinepaymentpage';
 import Addresspage from './Pages/Addresspage';
 import OrderHistoryPage from "./Pages/OrderHistoryPage"
  import OrderTracking from './Components/OrderTracking';
+ import Mainprofilepage from "./Pages/Mainprofilepage"
 function App() {
   return (
     <div>
@@ -25,7 +26,7 @@ function App() {
     <Route index element={<Homepage />} />
         <Route path="/Privacy Policy" element={<Blogpage />} />
         <Route path="/Aboutus" element={<Aboutuspage/>}/>
-      <Route path="/profile" element={ <Profilepage/>}/>
+      <Route path="/profile" element={ <Mainprofilepage/>}/>
       <Route path="/helpcenter and faqs" element={ <Helpcenterpage/>}/>
       <Route path="/helpcenterinfo" element={ <Helpcenterinfopage/>}/>
       <Route path="/searchresults" element={ <ProductListpage/>}/>
@@ -36,6 +37,7 @@ function App() {
       <Route path="/address" element={ <Addresspage/>}/>      
       <Route path="/recentorders" element={ <OrderHistoryPage/>}/>
         <Route path="/tracking/:orderid" element={ <OrderTracking/>}/>  
+        <Route path='/editprofile' element={<Profilepage/>} />
     </Routes>
     </BrowserRouter>
     </div>
