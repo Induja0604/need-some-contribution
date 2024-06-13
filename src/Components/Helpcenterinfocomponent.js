@@ -95,5 +95,51 @@ export default function Helpcenterinfocomponent() {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+  </div>
+  <div class="inner-container">
+    <div class="box">
+        <h3>Skills you gained?</h3>
+        </div>
+    <div class="box">
+        <h3 class="yh">></h3>
+    </div>
+  </div>
+  <div class="inner-container">
+    <div class="box">
+        <h3>Introduction in Interview</h3>
+        </div>
+    <div class="box">
+      <h3  class="yh">></h3>
+    </div>
+  </div>
+  <div class="inner-container">
+    <div class="box">
+        <h3>Describe Yourself</h3>
+        </div>
+    <div class="box">
+        <h3 class="yh">></h3>
+    </div>
+  </div>
+  <div class="inner-container">
+    <div class="box">
+        <h3>Who Am I ?</h3>
+        </div>
+    <div class="box">
+        <h3 class="yh">></h3>
+    </div>
+  </div>
+  <div class="inner-container">
+    <div class="box">
+        <h3>Skills you gained?</h3>
+        </div>
+    <div class="box">
+        <h3 class="yh">></h3>
+    </div>
+  </div>
+</div>
+)
+=======
   );
+>>>>>>> 619f18b2c789cb180ccf1a34af5530394abe0e29
 }

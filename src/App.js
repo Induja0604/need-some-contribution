@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Profilepage from "./Pages/Profilepage";
 import Homepagecomp from './Components/Homepagecomp';
 import Homepage from "./Pages/Homepage";
@@ -13,6 +14,8 @@ import Cartpage from './Pages/Cartpage';
 import Paymentformpage from './Pages/Paymentformpage';
 import Onlinepaymentpage from './Pages/Onlinepaymentpage';
 import Addresspage from './Pages/Addresspage';
+import OrderHistoryPage from "./Pages/OrderHistoryPage"
+ import OrderTracking from './Components/OrderTracking';
 function App() {
   return (
     <div>
@@ -31,7 +34,8 @@ function App() {
       <Route path="/paymentform" element={ <Paymentformpage/>}/>
       <Route path="/onlinepayment" element={ <Onlinepaymentpage/>}/>   
       <Route path="/address" element={ <Addresspage/>}/>      
-   
+      <Route path="/recentorders" element={ <OrderHistoryPage/>}/>
+        <Route path="/tracking/:orderid" element={ <OrderTracking/>}/>  
     </Routes>
     </BrowserRouter>
     </div>

@@ -191,6 +191,7 @@ import React, { useEffect, useState } from "react";
 import '../Stylesheets/Cartdetails.css';
 import Profile from './Profile';
 import {Link} from 'react-router-dom'
+import axios from "axios";
 const CartItem = ({ item, onAdd, onSubtract, onRemove }) => {
   return (
     <li className="_grid shopping-cart--list-item">
@@ -235,7 +236,7 @@ const CartFooter = ({ subtotal, shipping, taxes, total, onCheckout }) => {
         <div className="cart-totals-value">INR {total.toFixed(2)}</div>
       </div>
       <div className="_column checkout">
-        <button className="_btn checkout-btn entypo-forward" onClick={onCheckout}>Checkout</button>
+        <button className="_btn checkout-btn entypo-forward" id="checkoutButton" onClick={onCheckout}>Checkout</button>
       </div>
     </footer>
   );
@@ -247,13 +248,20 @@ const Cartitemdetailscomp = () => {
   const [addressdata, setaddressdata] = useState([]);
   const [loading, setLoading] = useState(true);   
    const userid = localStorage.getItem('userid');
+   const addressid = localStorage.getItem('addressid');
+   const totalprice = localStorage.getItem('totalprice');
+
 
   useEffect(() => {
     const userId = localStorage.getItem('userid');
     fetch(`http://localhost:3005/v1/cart/${userId}`)
       .then(response => response.json())
       .then(data => {
-        setCartedItems(data);
+        if (data) {
+          setCartedItems(data);
+        } else {
+          setCartedItems([]);
+        }
       })
       .catch(error => {
         setError(error);
@@ -362,7 +370,7 @@ const Cartitemdetailscomp = () => {
   };
 
   const calculateSubtotal = () => {
-    return cartedItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+    return cartedItems.length > 0 ?cartedItems.reduce((acc, item) => acc + (item.price * item.qty), 0):0;
   };
 
   const calculateShipping = (subtotal) => {
@@ -387,16 +395,17 @@ const Cartitemdetailscomp = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3005/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ userId, items: cartedItems, total })
+      const response = await axios.post('http://localhost:3005/checkout',{
+        userid:userid,
+        addressid:addressid,
+        totalprice:totalprice
       });
-      if (response.ok) {
-        const data = await response.json();
-        alert(`Checkout successful! Order ID: ${data.orderId}`);
+      if (response.data.success) {
+        localStorage.setItem('orderid',response.data.orderid)
+        const checkoutButton = document.getElementById('checkoutButton');
+        checkoutButton.disabled = false;
+      window.location.replace("/onlinepayment")
+      
         // Clear the cart or redirect to another page if needed
       } else {
         const errorData = await response.json();
@@ -420,21 +429,25 @@ const Cartitemdetailscomp = () => {
           <div className="error-message">{error}</div>
         ) : (
           <section className="shopping-cart">
-            <ol className="ui-list shopping-cart--list" id="shopping-cart--list" style={{overflowX:"hidden",overflowY:"auto"}} >
-              {cartedItems.map(item => (
-                <CartItem 
-                  key={item._id} 
-                  item={item} 
-                  onAdd={handleAdd} 
-                  onSubtract={handleSubtract} 
-                  onRemove={handleRemove} 
-                />
-              ))}
-            </ol>
-
+            <ol className="ui-list shopping-cart--list" id="shopping-cart--list" style={{overflowX:"hidden",overflowY:"auto"}}>
+  {cartedItems && cartedItems.length > 0 ? (
+    cartedItems.map(item => (
+      <CartItem 
+        key={item._id} 
+        item={item} 
+        onAdd={handleAdd} 
+        onSubtract={handleSubtract} 
+        onRemove={handleRemove} 
+      />
+    ))
+  ) : (
+    <div>No items in the cart.</div>
+  )}
+</ol>
+        <div style={{backgroundColor:"lightgray"}}>
               {addressdata.length > 0 ? (
           <label className='shippingaddress-item'>
-            <input type="radio" name="selectedAddress" className="radio-button" onClick={handleaddress} />
+            <input type="radio" name="selectedAddress" className="radio-button" onClick={handleaddress} checked />
             <div>
               <div style={{fontSize:"20px",color:"black"}}><b>{addressdata[0].name}</b></div>
               <div  style={{fontSize:"16px",color:"black",fontWeight:"lighter"}}>{addressdata[0].houseNumber}</div>
@@ -443,7 +456,7 @@ const Cartitemdetailscomp = () => {
               <div  style={{fontSize:"16px",color:"black",fontWeight:"lighter"}}>{addressdata[0].town} {addressdata[0].state} {addressdata[0].pincode}</div>
               <div style={{fontSize:"16px",color:"black",fontWeight:"lighter"}}>{addressdata[0].number}</div><br />
               <div className='edit-buttons'>
-                    <button><Link to='/address'>Change address</Link></button>
+                    <button style={{borderRadius:"20%"}}><Link to='/address' style={{color:"black",textDecoration:"none"}}>Change address</Link></button>
 
             </div>
             </div>
@@ -451,6 +464,7 @@ const Cartitemdetailscomp = () => {
         ) : (
           <div>No address data available.</div>
         )}
+          </div>
             <CartFooter 
               subtotal={subtotal} 
               shipping={shipping} 
