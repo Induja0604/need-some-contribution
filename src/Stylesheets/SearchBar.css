@@ -16,7 +16,7 @@
   --transition-time-icon: 0.2s;
   --transition-time-input: 0.3s 0.25s;
   border-radius: 999px;
-  border: 2px solid transparent;
+  border: 0px solid transparent;
   display: flex;
   transition: border-color var(--transition-time-icon) linear, padding var(--transition-time-input) var(--easing);
 }
