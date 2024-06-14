@@ -48,7 +48,7 @@ const Productpagecomp = () => {
         console.error('Error registering:', error);
     }
   }
-
+console.log(product);
   return (
     <div className="productdetailscontainer">
       <div className="product-container">
@@ -62,11 +62,11 @@ const Productpagecomp = () => {
           <p className="product-id">Product ID: {product.Id}</p>
           <p className="manufacturers">Manufacturers: {product.manufacturers}</p>
           <p className="stock">Stock: {product.stock}</p>
-          <p className="packaging">Packaging: {product.packaging}</p>
-          <p className="package">Package: {product.package}</p>
-          <p className="quantity">Quantity: {product.quantity}</p>
-          <p className="product-form">Product Form: {product.product_form}</p>
-          <p className="mrp">MRP: Rs. {product.mrp}</p>
+          <p className="packaging">Packaging: {product.Packaging}</p>
+          <p className="package">Package: {product.Package}</p>
+          <p className="quantity">Quantity: {product.Quantity}</p>
+          <p className="product-form">Product Form: {product.Product_Form}</p>
+          <p className="mrp">MRP: Rs. {product.MRP}</p>
           <button className="add-to-cart-btn" onClick={handlecartbutton}>{product.for_sale ? 'Add to Cart' : 'Out of Stock'}</button>
           <div className="discount-box">{product.discount_percent}% Off</div>
         </div>
@@ -81,65 +81,87 @@ const Productpagecomp = () => {
           <table>
             <tbody>
               <tr>
-                <td>Bought</td>
-                <td>{product.bought}</td>
+              {product.bought && (
+                   <tr>
+                     <td>Bought</td>
+                     <td>{product.bought}</td>
+                    </tr>
+              )}
               </tr>
-              <tr>
+              {product.prescription_required &&(
+                <tr>
                 <td>Prescription Required</td>
-                <td>{product.prescription_required}</td>
+               <td>{product.prescription_required}</td>
               </tr>
-              <tr>
+              )
+              }
+              {
+                product.fact_box && (
+                  <tr>
                 <td>Fact Box</td>
                 <td>{product.fact_box}</td>
               </tr>
-              <tr>
-                <td>Primary Use</td>
-                <td>{product.primary_use}</td>
-              </tr>
-              <tr>
-                <td>Storage</td>
-                <td>{product.storage}</td>
-              </tr>
-              <tr>
+                )
+              }
+              {
+                product.primary_use &&( <tr>
+                  <td>Primary Use</td>
+                  <td>{product.primary_use}</td>
+                </tr>)
+              }
+              {
+                product.storage && ( <tr>
+                  <td>Storage</td>
+                  <td>{product.storage}</td>
+                </tr>)
+              }
+              {product.use_of && (<tr>
                 <td>Use Of</td>
                 <td>{product.use_of}</td>
-              </tr>
-              <tr>
-                <td>Common Side Effect</td>
-                <td>{product.common_side_effect}</td>
-              </tr>
-              <tr>
+              </tr>)}
+              {product.common_side_effect &&(
+                 <tr>
+                 <td>Common Side Effect</td>
+                 <td>{product.common_side_effect}</td>
+               </tr>
+              )}
+              {product.alcoholInteraction && (<tr>
                 <td>Alcohol Interaction</td>
                 <td>{product.alcoholInteraction}</td>
-              </tr>
-              <tr>
-                <td>Pregnancy Interaction</td>
-                <td>{product.pregnancyInteraction}</td>
-              </tr>
-              <tr>
-                <td>Lactation Interaction</td>
-                <td>{product.lactationInteraction}</td>
-              </tr>
-              <tr>
+              </tr>)}
+              {
+                product.pregnancyInteraction && (<tr>
+                  <td>Pregnancy Interaction</td>
+                  <td>{product.pregnancyInteraction}</td>
+                </tr>)
+              }
+              {product.lactationInteraction && (
+                 <tr>
+                 <td>Lactation Interaction</td>
+                 <td>{product.lactationInteraction}</td>
+               </tr>
+              )}
+             {product.drivingInteraction && ( <tr>
                 <td>Driving Interaction</td>
                 <td>{product.drivingInteraction}</td>
-              </tr>
-              <tr>
+              </tr>)}
+             {product.kidneyInteraction && (<tr>
                 <td>Kidney Interaction</td>
                 <td>{product.kidneyInteraction}</td>
-              </tr>
-              <tr>
+              </tr>)}
+              {product.liverInteraction && (<tr>
                 <td>Liver Interaction</td>
                 <td>{product.liverInteraction}</td>
-              </tr>
-              <tr>
+              </tr>)}
+              {product.MANUFACTURER_ADDRESS && (<tr>
                 <td>Manufacturer Address</td>
                 <td>{product.MANUFACTURER_ADDRESS}</td>
-              </tr>
-              <tr>
+              </tr>)}
+              {product.country_of_origin && (<tr>
                 <td>Country of Origin</td>
                 <td>{product.country_of_origin}</td>
-              </tr>
+              </tr>)}
+              
             </tbody>
           </table>
         </div>

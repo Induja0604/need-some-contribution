@@ -86,7 +86,7 @@ export default function Profilecomp(){
             <label for="email" className="profilelabeltext">Email*</label>
             <input type="email" id="email" name="email" required value={backenddata.email} onChange={handledataChange} />
             
-            <button type="submit">Save</button>
+          <button type="submit">Save</button>
         </form>
     </div>
         </div>

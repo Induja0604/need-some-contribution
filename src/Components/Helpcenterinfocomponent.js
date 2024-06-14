@@ -74,7 +74,7 @@ export default function Helpcenterinfocomponent() {
                 <h3>{data.question}</h3>
                 <h3 className={expandedQuestion === data.id ? "down-arrow expanded" : "right-arrow"}>
   {expandedQuestion === data.id ? "▼" : "►"}
-</h3>
+     </h3>
               </div>
               <div className={expandedQuestion === data.id ? "answer-container expanded" : "answer-container collapsed"}>
                 <div className="answer">
@@ -95,5 +95,6 @@ export default function Helpcenterinfocomponent() {
         </div>
       </div>
     </div>
-  );
+
+)
 }

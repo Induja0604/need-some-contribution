@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import close from "../Assets/Close.png";
 import "../Stylesheets/homepage.css";
 import '../Stylesheets/Navbar.css';

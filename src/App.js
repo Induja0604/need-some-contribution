@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Profilepage from "./Pages/Profilepage";
 import Homepagecomp from './Components/Homepagecomp';
 import Homepage from "./Pages/Homepage";
@@ -13,6 +14,9 @@ import Cartpage from './Pages/Cartpage';
 import Paymentformpage from './Pages/Paymentformpage';
 import Onlinepaymentpage from './Pages/Onlinepaymentpage';
 import Addresspage from './Pages/Addresspage';
+import OrderHistoryPage from "./Pages/OrderHistoryPage"
+ import OrderTracking from './Components/OrderTracking';
+ import Mainprofilepage from "./Pages/Mainprofilepage"
 function App() {
   return (
     <div>
@@ -22,7 +26,7 @@ function App() {
     <Route index element={<Homepage />} />
         <Route path="/Privacy Policy" element={<Blogpage />} />
         <Route path="/Aboutus" element={<Aboutuspage/>}/>
-      <Route path="/profile" element={ <Profilepage/>}/>
+      <Route path="/profile" element={ <Mainprofilepage/>}/>
       <Route path="/helpcenter and faqs" element={ <Helpcenterpage/>}/>
       <Route path="/helpcenterinfo" element={ <Helpcenterinfopage/>}/>
       <Route path="/searchresults" element={ <ProductListpage/>}/>
@@ -31,7 +35,9 @@ function App() {
       <Route path="/paymentform" element={ <Paymentformpage/>}/>
       <Route path="/onlinepayment" element={ <Onlinepaymentpage/>}/>   
       <Route path="/address" element={ <Addresspage/>}/>      
-   
+      <Route path="/recentorders" element={ <OrderHistoryPage/>}/>
+        <Route path="/tracking/:orderid" element={ <OrderTracking/>}/>  
+        <Route path='/editprofile' element={<Profilepage/>} />
     </Routes>
     </BrowserRouter>
     </div>
