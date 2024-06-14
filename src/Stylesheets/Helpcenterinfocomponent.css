@@ -1,7 +1,7 @@
-* {
+/* * {
   font-size: large;
 
-}
+} */
 
   
 .outer-container {
@@ -30,6 +30,10 @@ margin-left: 50px;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+.inner-container .box h3{
+  font-weight: normal;
+  font-size: 20px;
+}
 .box:hover {
   background-color: #efe3e3;
   transform: scale(1.02);
@@ -55,7 +59,10 @@ margin-left: 50px;
   transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
+.answer h3{
+  font-weight: normal;
+  font-size: 19px;
+}
 .answer-container.expanded {
   max-height: 500px; 
   padding: 10px;
