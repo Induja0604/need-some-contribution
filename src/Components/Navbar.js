@@ -1,39 +1,41 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import close from "../Assets/Close.png";
 import "../Stylesheets/homepage.css";
 import '../Stylesheets/Navbar.css';
+import { memo } from "react";
 
-const NavItem = ({ name, items }) => {
+const NavItem = memo(({ name, items }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  
   return (
     <li 
+      className="nav-item"   
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
-      className="nav-item"
     >
-      <a href="#">{name}</a>
-      {isOpen && items && (
+      <a>{name}</a>
+      { isOpen && items && (
         <ul className="dropdown">
           {items.map((item, index) => (
-            <li key={index}><a href="#">{item}</a></li>
+            <li key={index}><Link className="link-component" to={item.link}>{item.name}</Link></li>
           ))}
         </ul>
       )}
     </li>
   );
-};
+});
 
-const Navbar = () => {
+const Navbar =() => {
   const bottomNavItems = [
-    { name: 'Home', items: ['Profile', 'Recent orders'] },
-    { name: 'Medicine', items: ['Children', 'Adults', 'Old people'] },
-    { name: 'Health care', items: ['diabetic care', 'skin and hair care', 'Ortho care'] },
-    { name: 'Health Blogs' },
+    { name: 'Home', items: [{ name: 'Profile', link: '/profile' },
+      { name: 'Recent orders', link: '/recentorders' }] },
+    { name: 'Medicine' },
+    { name: 'Health care' },
+    { name: 'Health Blogs' ,items: [{ name: 'Privacy Policy', link: '/Privacy Policy' }] },
     { name: 'Value Store' },
     { name: 'Offers' },
-    { name: 'Cart' }
+    { name: 'Cart',items: [{ name: 'cartdetails', link: '/cartdetails' }]  },
   ];
   const [phoneNumber, setPhoneNumber] = useState("");
   const [OTP, setOTP] = useState("");
@@ -112,7 +114,7 @@ const Navbar = () => {
       <div className="top_nav">
         <div className="left">
           <div className="logo">
-            <p><span><a href='#'>Pharm</a></span>pe</p>
+          <Link  to="/" style={{textDecoration:"none"}}>  <p><span><a href='#'>Pharm</a></span>pe</p></Link>
           </div>
         </div>
         <div className="right">

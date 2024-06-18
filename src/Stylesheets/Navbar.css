@@ -137,6 +137,7 @@ body {
 }
 
 .nav-item:hover .dropdown {
+  position: absolute;
   display: block;
   opacity: 1;
   transform: translateY(0);

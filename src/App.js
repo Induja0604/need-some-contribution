@@ -15,7 +15,7 @@ import Paymentformpage from './Pages/Paymentformpage';
 import Onlinepaymentpage from './Pages/Onlinepaymentpage';
 import Addresspage from './Pages/Addresspage';
 import OrderHistoryPage from "./Pages/OrderHistoryPage"
- import OrderTracking from './Components/OrderTracking';
+import Trackingpage from './Pages/Trackingpage';
  import Mainprofilepage from "./Pages/Mainprofilepage"
 function App() {
   return (
@@ -36,7 +36,7 @@ function App() {
       <Route path="/onlinepayment" element={ <Onlinepaymentpage/>}/>   
       <Route path="/address" element={ <Addresspage/>}/>      
       <Route path="/recentorders" element={ <OrderHistoryPage/>}/>
-        <Route path="/tracking/:orderid" element={ <OrderTracking/>}/>  
+        <Route path="/tracking/:orderid" element={ <Trackingpage/>}/>  
         <Route path='/editprofile' element={<Profilepage/>} />
     </Routes>
     </BrowserRouter>
