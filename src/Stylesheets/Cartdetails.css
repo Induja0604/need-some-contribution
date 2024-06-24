@@ -21,6 +21,10 @@ h1,
  * @section: utilities;
  * @see: Justify Grid [http://justifygrid.com/]
  */
+ /**
+ * @section: utilities;
+ * @see: Justify Grid [http://justifygrid.com/]
+ */
 ._grid {
 	text-align: justify !important;
 	text-justify: distribute-all-lines;
