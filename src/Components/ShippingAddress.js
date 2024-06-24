@@ -110,12 +110,13 @@ function ShippingAddress() {
             <div className='content'>
                 <button onClick={initialAddAddress} className='btn btn-addAddress'>ADD NEW ADDRESS</button>
                 {showModal && (
-                    <div className='modal'>
+                    <div>
                         <div className='modal-content'>
                             <h2>{editIndex >= 0 ? "Edit Address" : "Add a new Address"}</h2>
                             <form onSubmit={handleSubmit}>
-                                <label htmlFor='name-container'>Full Name (First and last Name) :</label>
+                                <label className="label-class" htmlFor='name-container'>Full Name (First and last Name) :</label>
                                 <input
+                                  className="input-class"
                                     type='text'
                                     name="name"
                                     value={addressdetails.name}
@@ -123,8 +124,9 @@ function ShippingAddress() {
                                     onChange={handleChange}
                                     required
                                 />
-                                <label htmlFor='mobile-number-container'>Mobile Number :</label>
+                                <label className="label-class" htmlFor='mobile-number-container'>Mobile Number :</label>
                                 <input
+                                  className="input-class"
                                     type='text'
                                     name="number"
                                     value={addressdetails.number}
@@ -134,8 +136,9 @@ function ShippingAddress() {
                                     maxLength="10"
                                     required
                                 />
-                                <label htmlFor='pincode-container'>Pincode :</label>
+                                <label className="label-class" htmlFor='pincode-container'>Pincode :</label>
                                 <input
+                                  className="input-class"
                                     type='text'
                                     name='pincode'
                                     value={addressdetails.pincode}
@@ -145,8 +148,9 @@ function ShippingAddress() {
                                     maxLength="6"
                                     required
                                 />
-                                <label htmlFor='house-number-container'>Flat, House Number :</label>
+                                <label className="label-class" htmlFor='house-number-container'>Flat, House Number :</label>
                                 <input
+                                  className="input-class"
                                     type='text'
                                     name='houseNumber'
                                     value={addressdetails.houseNumber}
@@ -155,8 +159,9 @@ function ShippingAddress() {
                                     maxLength="100"
                                     required
                                 />
-                                <label htmlFor='area-container'><b>Area, Street, Village:</b></label>
+                                <label className="label-class" htmlFor='area-container'><b>Area, Street, Village:</b></label>
                                 <input
+                                  className="input-class"
                                     type='text'
                                     name='area'
                                     value={addressdetails.area}
@@ -165,8 +170,9 @@ function ShippingAddress() {
                                     maxLength="100"
                                     required
                                 />
-                                <label htmlFor='landmark-container'>Landmark:</label>
+                                <label className="label-class" htmlFor='landmark-container'>Landmark:</label>
                                 <input
+                                  className="input-class"
                                     type='text'
                                     name='landmark'
                                     value={addressdetails.landmark}
@@ -175,8 +181,9 @@ function ShippingAddress() {
                                     id='landmark-container'
                                     maxLength="30"
                                 />
-                                <label htmlFor='town-container'>Town:</label>
+                                <label className="label-class" htmlFor='town-container'>Town:</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='town'
                                     value={addressdetails.town}
@@ -185,8 +192,9 @@ function ShippingAddress() {
                                     maxLength="30"
                                     required
                                 />
-                                <label htmlFor='state-container'>State:</label>
+                                <label className="label-class" htmlFor='state-container'>State:</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='state'
                                     value={addressdetails.state}

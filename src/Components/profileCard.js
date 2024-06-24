@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from 'react-router-dom';
-import '../Stylesheets/profileCard.css';
+import '../Stylesheets/ProfileCard.css';
 import { Link } from "react-router-dom";
 const ProfileCard = () => {
 
@@ -95,7 +95,7 @@ useEffect(()=>{
               <div className='profile-card-details-container'>
                   <div>
                       <h2 className="profile-name">{backenddata.name}</h2>
-                      <p className="profile-email">{backenddata.email}</p>
+                      <p className="profile-email"> {backenddata.email}</p>
                       <p className="profile-mobile">{backenddata.mno}</p>
                      <Link to="/editprofile">  <button  className="profile-button">Edit Details</button></Link> 
                   </div>

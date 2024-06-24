@@ -28,6 +28,7 @@ margin-left: 50px;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  background: linear-gradient(135deg,   #e0eec8,  rgb(204, 237, 245)); 
 }
 
 .inner-container .box h3{
