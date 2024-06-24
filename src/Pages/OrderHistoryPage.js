@@ -8,7 +8,7 @@ export default function OrderHistoryPage() {
         <div>\
             <Navbar/>
             <div className="mainprofilepagecontainer">
-                <Profile/>
+            <Profile/>
             <OrderHistory/>
             </div>
             <Footer/>

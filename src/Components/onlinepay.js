@@ -35,9 +35,9 @@ const Onlinepay = () => {
     const handlePaymentTypeChange = (e) => {
         setPaymentType(e.target.value);
         if (e.target.value === 'Phone') {
-            setAdditionalInput(<input type="text" name="phoneNumber" placeholder="Enter Phone Number" />);
+            setAdditionalInput(<input type="text" className='upi-input' name="phoneNumber" placeholder="Enter Phone Number" />);
         } else if (e.target.value === 'UPI') {
-            setAdditionalInput(<input type="email" name="upi" placeholder="Enter UPI ID" onChange={(e)=>setupi(e.target.value)}/>);
+            setAdditionalInput(<input type="email" className='upi-input' name="upi" placeholder="Enter UPI ID" onChange={(e)=>setupi(e.target.value)}/>);
         } else {
             setAdditionalInput('');
         }
@@ -113,11 +113,13 @@ const Onlinepay = () => {
                 <div className="container" id="paymentForm">
                     <h2>Make Payment</h2>
                     <form onSubmit={handleFormSubmit}>
-                        <label htmlFor="paymentType">Select Payment Type:</label>
+                        <p className="paymentType1">Select payment Type:</p>
+                        {/* <label htmlFor="paymentType">Select Payment Type:</label> */}
                         <select name="paymentType" id="paymentType" onChange={handlePaymentTypeChange} value={paymentType}>
                             <option value="select">--select--</option>
                             <option value="UPI">UPI</option>
-                            <option value="Phone">Phone Number</option>
+                            <option value="Phone">Phone Number</option>   
+                           
                         </select>
                         <br />
                         <div id="additionalInput">{additionalInput}</div>
