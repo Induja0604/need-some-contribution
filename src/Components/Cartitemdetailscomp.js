@@ -193,10 +193,11 @@ import Profile from './Profile';
 import {Link} from 'react-router-dom'
 import axios from "axios";
 const CartItem = ({ item, onAdd, onSubtract, onRemove }) => {
+  
   return (
     <li className="_grid shopping-cart--list-item">
       <div className="_column product-image">
-        <img className="product-image--img" src={item.imageUrl} alt="Item image" />
+        <img className="product-image--img" src={item.imgurl1} alt="Item image" />
       </div>
       <div className="_column product-info">
         <h4 className="product-name">{item.name}</h4>
@@ -247,14 +248,20 @@ const Cartitemdetailscomp = () => {
   const [error, setError] = useState(null);
   const [addressdata, setaddressdata] = useState([]);
   const [loading, setLoading] = useState(true);   
+  const [cart,setcart]= useState([])
+ 
    const userid = localStorage.getItem('userid');
    const addressid = localStorage.getItem('addressid');
    const totalprice = localStorage.getItem('totalprice');
-
+  const product =JSON.parse(localStorage.getItem('products'));
 
   useEffect(() => {
     const userId = localStorage.getItem('userid');
-    fetch(`http://localhost:3005/v1/cart/${userId}`)
+    if(!userId){
+      setcart(product)
+      console.log("login to get userinfo");
+    }else{
+      fetch(`http://localhost:3005/v1/cart/${userId}`)
       .then(response => response.json())
       .then(data => {
         if (data) {
@@ -267,6 +274,8 @@ const Cartitemdetailscomp = () => {
         setError(error);
         console.error('Error fetching data:', error);
       });
+    }
+   
   }, []);
   useEffect(() => {
     setLoading(true);
@@ -275,7 +284,7 @@ const Cartitemdetailscomp = () => {
     fetch(`http://localhost:3005/address/${userid}`)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Failed to fetch address data');
+                console.log("unable to get userid")
             }
             return response.json();
         })
@@ -291,7 +300,7 @@ const Cartitemdetailscomp = () => {
         console.log("addressdata",addressdata);
 }, [userid]);
 
-
+console.log(cart);
   const updateQuantity = async (id, qty) => {
     const userId = localStorage.getItem('userid');
     if (!userId) {
@@ -346,6 +355,7 @@ const Cartitemdetailscomp = () => {
       }
     }
   };
+
 
   const handleRemove = async (id) => {
     const userId = localStorage.getItem('userid');
@@ -441,13 +451,37 @@ const Cartitemdetailscomp = () => {
       />
     ))
   ) : (
-    <div>No items in the cart.</div>
+    product ? ( cart.map(product=>{
+    return(
+      <div>
+         <li className="_grid shopping-cart--list-item">
+      <div className="_column product-image">
+        <img className="product-image--img" src={product.imgurl1} alt="Item image" />
+      </div>
+      <div className="_column product-info">
+        <h4 className="product-name">{product.name}</h4>
+        <p className="product-desc">{product.desc}</p>
+        <div className="price product-single-price">INR {product.MRP}</div>
+      </div>
+      <div className="_column product-modifiers" data-product-price={product.MRP}>
+        <div className="_grid">
+          <button className="_btn _column product-subtract" onClick={() => handleSubtract(product._id)}>-</button>
+          <div className="_column product-qty">{product.qty}</div>
+          <button className="_btn _column product-plus" onClick={() => handleAdd(product._id)}>+</button>
+        </div>
+        <button className="_btn entypo-trash product-remove" onClick={() => handleRemove(product._id)}>Remove</button>
+        <div className="price product-total-price">{(product.price * product.qty).toFixed(2)}/-</div>
+      </div>
+    </li>
+      </div>
+    )
+   })):(<p>Cart is empty</p>)
   )}
 </ol>
         <div style={{backgroundColor:"lightgray"}}>
               {addressdata.length > 0 ? (
           <label className='shippingaddress-item'>
-            <input type="radio" name="selectedAddress" className="radio-button" onClick={handleaddress} checked />
+            <input type="radio" name="selectedAddress" className="input-class" onClick={handleaddress} checked />
             <div>
               <div style={{fontSize:"20px",color:"black"}}><b>{addressdata[0].name}</b></div>
               <div  style={{fontSize:"16px",color:"black",fontWeight:"lighter"}}>{addressdata[0].houseNumber}</div>

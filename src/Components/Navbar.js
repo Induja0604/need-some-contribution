@@ -4,8 +4,8 @@ import close from "../Assets/Close.png";
 import "../Stylesheets/homepage.css";
 import '../Stylesheets/Navbar.css';
 import { memo } from "react";
-
-const NavItem = memo(({ name, items }) => {
+import Cartitemdetailscomp from "./Cartitemdetailscomp";
+const NavItem = memo(({ name, items ,onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
@@ -13,12 +13,13 @@ const NavItem = memo(({ name, items }) => {
       className="nav-item"   
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
+      onClick={onClick}
     >
       <a>{name}</a>
       { isOpen && items && (
         <ul className="dropdown">
           {items.map((item, index) => (
-            <li key={index}><Link className="link-component" to={item.link}>{item.name}</Link></li>
+            <li key={index}><Link className="link-component" to={item.link}  onClick={onClick}>{item.name}</Link></li>
           ))}
         </ul>
       )}
@@ -43,9 +44,16 @@ const Navbar =() => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState(localStorage.getItem('user') || 'Login/Signup');
+  const [cart, setCart] = useState([]);
   const popupRef = useRef(null);
   const overlayRef = useRef(null);
+const storedProducts = localStorage.getItem('products');
+  useEffect(() => {
+    if (storedProducts) {
+      setCart(JSON.parse(storedProducts));
+    }
 
+  }, []);
   const sendOtp = async (event) => {
     event.preventDefault();
     setIsLoading(true);
@@ -68,6 +76,7 @@ const Navbar =() => {
   };
 
   const verifyOtp = async (event) => {
+    
     event.preventDefault();
     setIsLoading(true);
     try {
@@ -86,10 +95,13 @@ const Navbar =() => {
         const userInfo = await userInfoResponse.json();
       if (userInfoResponse.status === 200) {
         console.log('User information:', userInfo);
+        localStorage.setItem('login','true');
         localStorage.setItem('user', phoneNumber);
         localStorage.setItem('userid', userInfo[0]._id);
         setUser(phoneNumber);
-        window.location.href = '/';           
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1000);    
       }
       else {
         alert('User information not found.');
@@ -108,7 +120,45 @@ const Navbar =() => {
     popupRef.current.style.display = isVisible ? 'block' : 'none';
     overlayRef.current.style.display = isVisible ? 'block' : 'none';
   };
-
+  const handleCartClick = async () => {
+    const islogged = localStorage.getItem('login');
+    if (islogged) {
+      const userId = localStorage.getItem('userid');
+  
+      // Fetch current cart items for the user
+      const currentCartResponse = await fetch(`http://localhost:3005/v1/cart/${userId}`);
+      const currentCart = await currentCartResponse.json();
+  
+      // Extract the ids of the products already in the cart
+      const currentCartProductIds = currentCart.length > 0 ? currentCart.map(product => product.Id) : [];
+  
+      // Filter the products from localStorage to exclude those already in the cart
+      const newProducts = cart.filter(product => !currentCartProductIds.includes(product.Id));
+  
+      // Add only the new products to the cart
+      const response = newProducts.map(async (product) => {
+        await fetch(`http://localhost:3005/addingtocart/${product.Id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userid: userId,
+            name: product.name,
+            manufacturers: product.manufacturers,
+            imgurl1:product.imgurl1,
+            MRP: product.MRP,
+            price: product.price,
+          }),
+        });
+    });
+      await Promise.all(response);
+      localStorage.removeItem('products');
+    }
+  };
+  
+  
+  
   return (
     <div>
       <div className="top_nav">
@@ -126,8 +176,12 @@ const Navbar =() => {
       </div>
       <div className="bottom_nav">
         <ul>
-          {bottomNavItems.map((item, index) => (
-            <NavItem key={index} name={item.name} items={item.items} />
+        {bottomNavItems.map((item, index) => (
+            item.name === 'Cart' ? (
+              <NavItem key={index} name={item.name} items={item.items} onClick={handleCartClick} />
+            ) : (
+              <NavItem key={index} name={item.name} items={item.items} />
+            )
           ))}
         </ul>
       </div>

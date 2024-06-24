@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams, Link } from 'react-router-dom';
 import '../Stylesheets/ShippingAddress.css';
 import Addresscompbox from "./Addresscompbox";
 import Profile from './Profile';
@@ -12,7 +11,6 @@ function ShippingAddress() {
     const [togglevalue, settoggle] = useState();
     const [showModal, setShowModal] = useState(false);
     const [editIndex, setEditIndex] = useState(-1);
-
     const userid = localStorage.getItem('userid');
 
     useEffect(() => {
@@ -91,15 +89,20 @@ function ShippingAddress() {
             town: editaddress.town,
             state: editaddress.state,
         });
-        setEditIndex( _id);
+        setEditIndex(addressdata.findIndex(item => item._id === _id));
     };
+    console.log(editIndex);
 
     function initialAddAddress() {
+        console.log("intialization called");
         setShowModal(true);
         setEditIndex(-1);
         setaddress({ name: "", number: "", pincode: "", houseNumber: "", area: "", landmark: "", town: "", state: "" });
+        
     }
-
+useEffect(() => {
+    console.log("showModal:", showModal);
+  }, [showModal]);
     const addressdetailcomp = addressdata.map(item => (
         <Addresscompbox key={item._id} {...item} toggle={toggle} />
     ));
@@ -110,12 +113,14 @@ function ShippingAddress() {
             <div className='content'>
                 <button onClick={initialAddAddress} className='btn btn-addAddress'>ADD NEW ADDRESS</button>
                 {showModal && (
-                    <div className='modal'>
+                    <div>
                         <div className='modal-content'>
                             <h2>{editIndex >= 0 ? "Edit Address" : "Add a new Address"}</h2>
-                            <form onSubmit={handleSubmit}>
-                                <label htmlFor='name-container'>Full Name (First and last Name) :</label>
+                             <form onSubmit={handleSubmit}>
+                                <div >
+                                <label className="label-class" htmlFor='name-container'>Full Name (First and last Name) :</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name="name"
                                     value={addressdetails.name}
@@ -123,8 +128,9 @@ function ShippingAddress() {
                                     onChange={handleChange}
                                     required
                                 />
-                                <label htmlFor='mobile-number-container'>Mobile Number :</label>
+                                <label className="label-class" htmlFor='mobile-number-container'>Mobile Number :</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name="number"
                                     value={addressdetails.number}
@@ -134,8 +140,9 @@ function ShippingAddress() {
                                     maxLength="10"
                                     required
                                 />
-                                <label htmlFor='pincode-container'>Pincode :</label>
+                                <label className="label-class" htmlFor='pincode-container'>Pincode :</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='pincode'
                                     value={addressdetails.pincode}
@@ -145,8 +152,9 @@ function ShippingAddress() {
                                     maxLength="6"
                                     required
                                 />
-                                <label htmlFor='house-number-container'>Flat, House Number :</label>
+                                <label className="label-class" htmlFor='house-number-container'>Flat, House Number :</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='houseNumber'
                                     value={addressdetails.houseNumber}
@@ -155,8 +163,9 @@ function ShippingAddress() {
                                     maxLength="100"
                                     required
                                 />
-                                <label htmlFor='area-container'><b>Area, Street, Village:</b></label>
+                                <label className="label-class" htmlFor='area-container'><b>Area, Street, Village:</b></label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='area'
                                     value={addressdetails.area}
@@ -165,8 +174,9 @@ function ShippingAddress() {
                                     maxLength="100"
                                     required
                                 />
-                                <label htmlFor='landmark-container'>Landmark:</label>
+                                <label className="label-class" htmlFor='landmark-container'>Landmark:</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='landmark'
                                     value={addressdetails.landmark}
@@ -175,8 +185,9 @@ function ShippingAddress() {
                                     id='landmark-container'
                                     maxLength="30"
                                 />
-                                <label htmlFor='town-container'>Town:</label>
+                                <label className="label-class" htmlFor='town-container'>Town:</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='town'
                                     value={addressdetails.town}
@@ -185,8 +196,9 @@ function ShippingAddress() {
                                     maxLength="30"
                                     required
                                 />
-                                <label htmlFor='state-container'>State:</label>
+                                <label className="label-class" htmlFor='state-container'>State:</label>
                                 <input
+                                className="input-class"
                                     type='text'
                                     name='state'
                                     value={addressdetails.state}
@@ -195,9 +207,9 @@ function ShippingAddress() {
                                     maxLength="30"
                                     required
                                 />
-
+                                </div>
                                 <div className='edit-buttons'>
-                                    <button type='submit'>{editIndex >= 0 ? "Save Changes" : "Add Address"}</button>
+                                <button type='submit'>{editIndex >= 0 ? "Save Changes" : "Add Address"}</button>
                                     <button type='button' onClick={() => setShowModal(false)}>Cancel</button>
                                 </div>
                             </form>
@@ -210,8 +222,8 @@ function ShippingAddress() {
                     <div>
                         {addressdata.length ? (
                             addressdetailcomp
-                        ) : (
-                            <div>Add address</div>
+                        ) : (userid ?
+                            <div>Add address</div>  :<div>Login to get  address</div>
                         )}
                     </div>
                 </div>

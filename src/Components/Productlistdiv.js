@@ -9,7 +9,15 @@ function Productlistdiv({ product }) {
     return <div>No product data available.</div>;
   }
   async function AddCart(){
-    try {
+    const user = localStorage.getItem('user');
+    const userid = localStorage.getItem('userid');
+    if (!user || !userid) {
+      const storedProducts = localStorage.getItem('products');
+      const newProducts = storedProducts ? [...JSON.parse(storedProducts),product] : [product];
+      localStorage.setItem('products', JSON.stringify(newProducts));
+    }
+    else{
+        try {
       setbtndisable(true);
       const response = await fetch(`http://localhost:3005/addingtocart/${product.Id}`, {
           method: 'POST',
@@ -24,12 +32,24 @@ function Productlistdiv({ product }) {
       // } else {
       //     window.location.href = '/cartdetails';
       // }
+      if (response.status === 200) {
+        const message = await response.text();
+        if (message === "Product is already in the cart") {
+          alert("Product is already in the cart");
+        } else {
+          console.log("Product added to cart");
+        }
+      } else {
+        console.error("Error adding product to cart:", await response.text());
+      }
+
   } catch (error) {
       console.error('Error registering:', error);
       setbtndisable(false);
   }
 
   }
+}
 
   return (
     <div key={product.Id} className="product-card">

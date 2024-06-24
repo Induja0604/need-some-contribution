@@ -24,7 +24,7 @@ export default function Addresscompbox({ _id, name, houseNumber, area, landmark,
 
     return (
         <label className='shippingaddress-item'>
-            <input type="radio" name="selectedAddress" className="radio-button" onClick={() => { handleaddress(); toggle(_id); }} />
+            <input type="radio" name="selectedAddress" className="input-class" onClick={() => { handleaddress(); toggle(_id); }} />
             <div>
                 <div><b>{name}</b></div>
                 <div>{houseNumber}</div>
