@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import "../Stylesheets/Profilestyles.css"
+import { Link } from 'react-router-dom'; 
 export default function Profilecomp(){
   const id=localStorage.getItem('userid');
   const phoneNumber=localStorage.getItem('user')
@@ -86,7 +87,7 @@ export default function Profilecomp(){
             <label for="email" className="profilelabeltext">Email*</label>
             <input type="email" id="email" name="email" required value={backenddata.email} onChange={handledataChange} />
             
-          <button type="submit">Save</button>
+           <button type="submit">Save</button>
         </form>
     </div>
         </div>

@@ -9,7 +9,7 @@ h6 {
 h1,
 .sub-heading {
 	text-align: center;
-    margin-right: -45px !important;
+    margin-right: -40px !important;
 	margin: 0.5rem 0 1rem;
 }
 .sub-heading {
@@ -26,11 +26,13 @@ h1,
 	text-justify: distribute-all-lines;
 	font-size: 0 !important;
 	text-rendering: optimizespeed;
+	margin-right: 100px; 
 }
 ._grid:after {
 	content: "";
 	display: inline-block;
 	width: 100%;
+ 
 }
 ._column {
 	display: inline-block;
@@ -38,18 +40,20 @@ h1,
 	font-size: medium;
 	text-align: left;
 	text-rendering: optimizeLegibility;
+
 }
 ._btn {
 	display: inline-block;
-	background-color: #bdc3c7;
+	background-color: #bdc1c4;
 	border: none;
 	padding: 0.5em 0.75em;
 	text-align: center;
 	font-weight: 300;
+	
 }
 ._btn:hover,
 .cart-totals:hover ._btn {
-	background-color: #3498db;
+	background-color: #d1d8e0;
 	color: #ecf0f1;
 }
 
@@ -75,6 +79,7 @@ h1,
 	margin-bottom: 3rem;
 	height: 10rem;
 	overflow: hidden;
+
 }
 .shopping-cart--list-item:hover,
 .shopping-cart--list-item:hover * {
@@ -92,6 +97,7 @@ h1,
 	width: 16.663198%;
 	background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
 		no-repeat center / cover transparent;
+		
 }
 
 /**
@@ -101,6 +107,7 @@ h1,
 .product-info {
 	width: 70.832119%;
 	padding: 0.5rem;
+	background: linear-gradient(135deg,   #e0eec8,  rgb(204, 237, 245)); 
 }
 .product-name {
 	font: 20px "Lato", sans-serif;
@@ -123,6 +130,7 @@ h1,
 	width: 12.496358%;
 	text-align: right;
 	border-left: 1px solid #bdc3c7;
+	background-color: white; 
 }
 .product-subtract,
 .product-plus,
@@ -131,9 +139,11 @@ h1,
 	background-color: transparent;
 	color: #686868;
 	text-align: center;
+	margin-left: 30px;
 }
 .product-qty {
 	padding: 0.35em 0.75em;
+	 
 }
 .product-remove {
 	font-size: 0.875em;
@@ -169,7 +179,7 @@ h1,
  */
 .cart-totals {
 	border-top: 1px solid #bdc3c7;
-	margin-bottom: 3rem;
+	margin-bottom: 3rem; 
 }
 .cart-totals ._column {
 	width: 19.984013%;

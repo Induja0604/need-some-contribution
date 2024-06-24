@@ -116,11 +116,13 @@ useEffect(() => {
                     <div>
                         <div className='modal-content'>
                             <h2>{editIndex >= 0 ? "Edit Address" : "Add a new Address"}</h2>
+
                              <form onSubmit={handleSubmit}>
                                 <div >
                                 <label className="label-class" htmlFor='name-container'>Full Name (First and last Name) :</label>
                                 <input
                                 className="input-class"
+
                                     type='text'
                                     name="name"
                                     value={addressdetails.name}
@@ -130,7 +132,9 @@ useEffect(() => {
                                 />
                                 <label className="label-class" htmlFor='mobile-number-container'>Mobile Number :</label>
                                 <input
+
                                 className="input-class"
+
                                     type='text'
                                     name="number"
                                     value={addressdetails.number}
@@ -142,7 +146,9 @@ useEffect(() => {
                                 />
                                 <label className="label-class" htmlFor='pincode-container'>Pincode :</label>
                                 <input
+
                                 className="input-class"
+
                                     type='text'
                                     name='pincode'
                                     value={addressdetails.pincode}
@@ -154,7 +160,11 @@ useEffect(() => {
                                 />
                                 <label className="label-class" htmlFor='house-number-container'>Flat, House Number :</label>
                                 <input
+
                                 className="input-class"
+
+                          
+
                                     type='text'
                                     name='houseNumber'
                                     value={addressdetails.houseNumber}
@@ -165,7 +175,9 @@ useEffect(() => {
                                 />
                                 <label className="label-class" htmlFor='area-container'><b>Area, Street, Village:</b></label>
                                 <input
+
                                 className="input-class"
+
                                     type='text'
                                     name='area'
                                     value={addressdetails.area}
@@ -176,7 +188,9 @@ useEffect(() => {
                                 />
                                 <label className="label-class" htmlFor='landmark-container'>Landmark:</label>
                                 <input
+
                                 className="input-class"
+
                                     type='text'
                                     name='landmark'
                                     value={addressdetails.landmark}

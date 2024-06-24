@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: left;
+    background: linear-gradient(135deg,   #e0eec8,  rgb(204, 237, 245)); 
   }
   .flexrowhelpcenter1 >div{
     padding-bottom:20px ;

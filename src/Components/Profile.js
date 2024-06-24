@@ -25,7 +25,7 @@ const Profile = () => {
                     <div className="profilepartcontainer">
                         <div className="profile-info">
                             <div className="profile-image">
-                                <img src="doctor.jpeg" alt="Profile" />
+                                <img src="https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg" alt="Profile" />
                             </div>
                             <div className="user-details">
                                 <h2>User</h2>
@@ -43,7 +43,15 @@ const Profile = () => {
 </div>
 <div class="profile-item">
     <span><img class="profileicons" src={shoppingcart} alt="Checkout Icon"/></span>
+
     <Link to="/cartdetails" style={{textDecoration:"none"}}> <p className="list-item">Cart Items</p></Link>
+
+    <p className="list-item">Cart Items</p>
+</div>
+<div class="profile-item">
+    <span><img class="profileicons" src={history} alt="Checkout Icon"/></span>
+    <p className="list-item">Order History</p>   
+
 </div>
 
        

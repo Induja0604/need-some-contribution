@@ -515,3 +515,13 @@ console.log(cart);
 };
 
 export default Cartitemdetailscomp;
+
+
+
+
+
+
+
+
+
+

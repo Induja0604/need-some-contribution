@@ -36,8 +36,11 @@ function App() {
       <Route path="/onlinepayment" element={ <Onlinepaymentpage/>}/>   
       <Route path="/address" element={ <Addresspage/>}/>      
       <Route path="/recentorders" element={ <OrderHistoryPage/>}/>
+
         <Route path="/tracking/:orderid" element={ <Trackingpage/>}/>  
         <Route path='/editprofile' element={<Profilepage/>} />
+
+
     </Routes>
     </BrowserRouter>
     </div>

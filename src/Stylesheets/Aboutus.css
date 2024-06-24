@@ -61,6 +61,7 @@
   }
   .flip-card-front{
     border:2.5px solid rgb(67,67,163);
+   
   }
   .md-sz{
     font-size: 13px!important;
@@ -123,6 +124,7 @@
     font-weight: bold;
     color: rgb(86, 101, 115);
     box-sizing: inherit;
+    background: linear-gradient(135deg,   #c0f06b,  rgb(133, 226, 249));
   }
   
   .DescBoxRight {
@@ -135,12 +137,13 @@
     font-size: 25px;
     font-weight: bold;
     color: rgb(86, 101, 115);
+    background: linear-gradient(135deg,   #c0f06b,  rgb(133, 226, 249));
   }
 
 
   .w3-center{
     text-align: center !important;
-}
+  }
   .w3-animate-left{
     position: relative;
     animation: animateleft 0.4s;
@@ -202,6 +205,7 @@
   
   .flip-card-front {
     border: 5px solid rgb(67, 67, 163);
+    background-color: #c0f06b;
   }
   
   .flip-card-front p {
@@ -215,12 +219,14 @@
   .flip-card-back {
     margin: auto;
     padding: auto;
+    height:auto;
     width: fit-content;
-    background-color: rgb(67, 67, 163, 0.2);
+    /* background-color: rgb(67, 67, 163, 0.2); */
     color: rgb(86, 101, 115);
     transform: rotateY(180deg);
     font-size: 1rem;
     font-weight: 500; 
+    background: linear-gradient(135deg,   #c0f06b,  rgb(133, 226, 249));
 
   }
 .flip-card-back h2{

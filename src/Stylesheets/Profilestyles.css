@@ -1,80 +1,110 @@
-*{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+/* Global styles for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.mainprofilepagecontainer{
+
+
+/* Styles for main profile page container */
+.mainprofilepagecontainer {
     display: flex;
     width: 90%;
     margin: 50px 100px 20px 100px;
 }
+
+/* Styles for main content container */
 .main-container {
     width: 100%;
     padding: 20px;
     font-family: 'Arial', sans-serif;
     float: left;
+    background-color:white ;
 }
 
+/* Header styling */
 .profileheader {
-    background-color: #29285E; /* Primary color */
+    background-color: rgb(0, 113, 139); /* Primary color */
     color: #fff;
-    padding: 15px 20px;
+    padding: 20px 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    border-bottom: 2px solid beige; /* Example border for bottom */
+    margin-bottom: 20px; /* Example margin bottom */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Example box shadow */
+    
 }
 
 /* Section styles */
 .profilepartcontainer {
     margin-bottom: 20px;
+    margin-right: 50px;
 }
 
+/* Profile info section */
 .profile-info {
     display: flex;
     align-items: center;
     padding: 20px;
-
     font-size: 12px;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    color:black;
 }
 
+/* Profile image styling */
 .profile-image img {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    margin-right: 20px;
+    border-radius: 10%;
+    margin-right: 5px;
 }
 
+/* User details styling */
 .user-details h2 {
-    color: #333;
+    color:black;
+    font-weight: 100;
+    font-size: xx-large;
+    font-style:normal;
+    background-color:olivedrab
 }
-.logoutclass{
+
+/* Logout container */
+.logoutclass {
     width: 100%;
     display: flex;
-    
 }
 
+/* Section heading */
 .section-head {
     font-size: 1.5rem;
     color: #29285E;
     margin-bottom: 10px;
+    background-color:olivedrab;
 }
+
+/* Profile item styling */
 .profile-item {
     text-decoration: none;
     cursor: pointer;
     display: flex;
     align-items: center;
 }
-.profileicons{
+
+/* Profile icons */
+.profileicons,
+.profileicons2 {
     width: 24px;  /* Adjust size as needed */
     height: 24px; /* Adjust size as needed */
     margin-right: 10px;
 }
-.profileicons2{
-    width: 30px;  /* Adjust size as needed */
-    height:30px; /* Adjust size as needed */
-    margin-right: 10px;
-}
+
+/* List item styling */
 .list-item {
     font-size: 14px;
-    color:  #00B1B9;
+    color: #00B1B9;
     line-height: 1.6;
     margin-bottom: 10px;
 }
@@ -82,7 +112,8 @@
 /* Social icons */
 .social-links {
     display: flex;
-    gap: 10px;
+    gap: 20px;
+
 }
 
 .social-links a {
@@ -109,8 +140,8 @@
 }
 
 @media (max-width: 480px) {
-    
-.profileheader, .footer {
+    .profileheader,
+    .footer {
         padding: 10px;
     }
 
@@ -131,60 +162,76 @@
         font-size: 0.9rem;
     }
 }
-/* //profile component css */
 
+/* Styles for profile form page */
 .mainprofileform {
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    margin: 10;
+    background:white;
 }
 
+/* Container for profile form */
 .profileform-container {
-    background-color: white;
+    /* background: linear-gradient(135deg,   #e0eec8,  rgb(204, 237, 245)); */
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 70%;
+    width: 60%;
+    height: 450px;
+    margin-right: 400px;
+    margin-left: 200px;
+
 }
 
+/* Heading style for profile form */
 .profileform-container h1 {
     text-align: center;
     margin-bottom: 20px;
-    color:#29285E; 
+    color:black; 
     font-size: 1.5rem;
-    text-align: left;
+    margin-left: auto;
+    font-size: xx-large;    
 }
 
+/* Label text style for profile form */
 .profilelabeltext {
     display: block;
-    color:  #00B1B9;
-    font-weight: bold;
+    color: purple;
+    font-weight: larger;
     margin-bottom: 8px;
-    font-weight: bold;
 }
 
+/* Input field style for profile form */
 .profileform-container input {
-    width: 95%;
+    width:calc(100% - 22px);
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid green;
     border-radius: 4px;
+     background: linear-gradient(135deg,   #e0eec8,  rgb(204, 237, 245));
+
+    
 }
 
+/* Button style for profile form */
 .profileform-container button {
     width: 15%;
     padding: 10px;
-    background-color:#29285E;
-    color: white;
+    background: linear-gradient(135deg,   #96d130,  rgb(21, 178, 218));
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: 0.5s ease background-color;
+    transition: background-color 0.5s ease;
+
 }
 
-button:hover {
-    background-color:#0f0f30;
+/* Hover effect for button in profile form */
+.profileform-container button:hover {
+    background: linear-gradient(135deg,    rgb(46, 187, 222),#8fc92b);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
