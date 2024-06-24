@@ -27,16 +27,20 @@ const Productpagecomp = () => {
   const handleImageChange = (image) => {
     setCurrentImage(image);
   };
-
   async function handlecartbutton(event){
     event.preventDefault();
+    const userid =  localStorage.getItem('userid');
+    if(!userid){
+      alert("Please login first");
+    }
+    else{
     try {
         const response = await fetch(`http://localhost:3005/addingtocart/${product.Id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ ...product, userid: localStorage.getItem('userid') }),
+            body: JSON.stringify({ ...product, userid:userid }),
         });
 
         if (response.ok) {
@@ -48,6 +52,7 @@ const Productpagecomp = () => {
         console.error('Error registering:', error);
     }
   }
+}
 console.log(product);
   return (
     <div className="productdetailscontainer">

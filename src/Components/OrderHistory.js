@@ -79,7 +79,8 @@ const OrderHistory = () => {
     <div className="order-history-container">
       <h2>Order History</h2>
       <div className="orders">
-        {orders.map(order => (
+      {
+        orders && orders.length>0 ?   orders.map(order => (
           <div key={order._id} className="order-card">
             <div className="order-header">
               <div>Order ID: {order.orderid}</div>
@@ -109,7 +110,8 @@ const OrderHistory = () => {
              {order.cancel ?<button onClick={()=> handleCancelOrder(order.orderid)}>cancel</button>:<button disabled>cancelled </button>}
             </div>
           </div>
-        ))}
+        )) : <p>Login to get orderdetails</p>}
+      
       </div>
 
       {selectedOrder && (

@@ -4,7 +4,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from '../Assets/Banner.jpg';
 import '../Stylesheets/Home.css';
-
 const Home = () => {
   const settings = {
     dots: true,

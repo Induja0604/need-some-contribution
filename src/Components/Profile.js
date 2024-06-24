@@ -1,18 +1,14 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import React from "react";
 import { Link } from "react-router-dom";
 import "../Stylesheets/Profilestyles.css"
 import checkout from "../Assets/checkout.png"
-import shoppingcart from "../Assets/shoppingcart.png"
-import history from "../Assets/history.png"
+import shoppingcart from "../Assets/shoppingcart.png" 
 import editprofile from "../Assets/editprofile.png"
 import manageaddress from "../Assets/manageaddress.png"
-import paymentmethods from "../Assets/paymentmethods.png"
 import Logout from "../Assets/Logout.png"
 const Profile = () => {
     function handleLogout(){
-        localStorage.removeItem("user")
-        localStorage.removeItem("userid")
+        localStorage.clear()
         window.location.href = '/';  
         
     }
@@ -43,16 +39,21 @@ const Profile = () => {
                         <h2 className="section-head">Your Orders</h2>
                         <div class="profile-item">
     <span><img class="profileicons" src={ checkout} alt="Checkout Icon"/></span>
-    <p className="list-item">Recent Orders</p>
+   <Link to="/recentorders" style={{textDecoration:"none"}}> <p className="list-item">Recent Orders</p></Link>
 </div>
 <div class="profile-item">
     <span><img class="profileicons" src={shoppingcart} alt="Checkout Icon"/></span>
+
+    <Link to="/cartdetails" style={{textDecoration:"none"}}> <p className="list-item">Cart Items</p></Link>
+
     <p className="list-item">Cart Items</p>
 </div>
 <div class="profile-item">
     <span><img class="profileicons" src={history} alt="Checkout Icon"/></span>
     <p className="list-item">Order History</p>   
+
 </div>
+
        
                     </div>
                 </section>
@@ -62,16 +63,13 @@ const Profile = () => {
                         <h2 className="section-head">Profile Settings</h2>
                         <Link to="/profile?user=665d59d0d5f702827ed10840" class="profile-item" > 
   <span><img class="profileicons" src={editprofile} alt="Checkout Icon"/></span>
-    <p className="list-item">Edit profile</p>
+  <Link to="/editprofile" style={{textDecoration:"none"}}>  <p className="list-item">Edit profile</p></Link>
 </Link>
 <div class="profile-item">
     <span><img class="profileicons" src={manageaddress} alt="Checkout Icon"/></span>
-    <p className="list-item">Manage Address</p>
+    <Link to="/address" style={{textDecoration:"none"}}> <p className="list-item">Manage Address</p></Link>
 </div>
-<div class="profile-item">
-    <span><img class="profileicons" src={paymentmethods } alt="Checkout Icon"/></span>
-    <p className="list-item">Payment Methods</p>
-</div>   
+  
 </div>
                 </section>
                 <section className="logout fade-in">

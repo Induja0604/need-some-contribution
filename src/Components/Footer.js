@@ -1,6 +1,6 @@
 import React from 'react';
 import "../Stylesheets/Footer.css";
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-footer">
@@ -9,27 +9,27 @@ const Footer = () => {
           <div className="footer-section">
             <h6 className="footer-heading">Our Company</h6>
             <ul className="footer-link">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Our Team</a></li>
-              <li><a href="#">Blog</a></li>
+              <li><Link to="/Aboutus">About Us</Link></li>
+              <li><Link to="#">Our Team</Link></li>
+              <li><Link to="/Privacy Policy">Blog</Link></li>
             </ul>
           </div>
           <div className="footer-section">
             <h6 className="footer-heading">Services</h6>
             <ul className="footer-link">
-              <li><a href="#">Medicine</a></li>
-              <li><a href="#">Healthcare Products</a></li>
-              <li><a href="#">Skin Care Products</a></li>
-              <li><a href="#">Diabetic Prodducts</a></li>
+              <li><Link to="#">Medicine</Link></li>
+              <li><Link to="#">Healthcare Products</Link></li>
+              <li><Link to="#">Skin Care Products</Link></li>
+              <li><Link to="#">Diabetic Prodducts</Link></li>
             </ul>
           </div>
           <div className="footer-section">
             <h6 className="footer-heading">Help</h6>
             <ul className="footer-link">
-              <li><a href="#">Sign Up &amp;Login</a></li>
-              <li><a href="/Privacy Policy">Privacy Policy</a></li>
-              <li><a href="#">Terms &amp; Conditions</a></li>
-              <li><a href="#">Faq</a></li>
+              <li><Link to="/profile">Sign Up &amp;Login</Link></li>
+              <li><Link to="/Privacy Policy">Privacy Policy</Link></li>
+              <li><Link to="#">Terms &amp; Conditions</Link></li>
+              <li><Link to="/helpcenter and faqs">Faq</Link></li>
             </ul>
           </div>
           <div className="footer-section">

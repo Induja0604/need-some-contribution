@@ -54,7 +54,7 @@ export default function OrderTracking(){
           <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-medium">Shipped Via:</span>Ground</div>
             <div class="w-100 text-center py-1 px-2"><span class="text-medium">Status:</span>Processing Order</div>
-            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Expected Date:</span> feb 14, 2024</div>
+            <div class="w-100 text-center py-1 px-2"><span class="text-medium">Expected Date:</span> Jun 14, 2024</div>
           </div>
           <div class="card-body">
            
